@@ -2,7 +2,7 @@
  *
  * Pentaho Data Integration
  *
- * Copyright (C) 2002-2017 by Hitachi Vantara : http://www.pentaho.com
+ * Copyright (C) 2002-2018 by Hitachi Vantara : http://www.pentaho.com
  *
  *******************************************************************************
  *
@@ -260,5 +260,11 @@ public class MergeJoinStepAnalyzerTest {
     assertNotNull( types );
     assertEquals( types.size(), 1 );
     assertTrue( types.contains( MergeJoinMeta.class ) );
+  }
+
+  @Test
+  public void testNewInstance(){
+    MergeJoinStepAnalyzer analyzer = new MergeJoinStepAnalyzer();
+    assertTrue( analyzer.newInstance().getClass().equals(MergeJoinStepAnalyzer.class));
   }
 }

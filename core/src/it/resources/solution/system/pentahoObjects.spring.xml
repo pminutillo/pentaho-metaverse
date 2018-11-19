@@ -162,7 +162,6 @@
         <ref bean="NumberRangeStepAnalyzer"/>
         <ref bean="ValueMapperStepAnalyzer"/>
         <ref bean="TextFileOutputStepAnalyzer"/>
-        <ref bean="MergeJoinStepAnalyzer"/>
         <ref bean="StreamLookupStepAnalyzer"/>
         <ref bean="MongoDbInputStepAnalyzer"/>
         <ref bean="ExcelInputStepAnalyzer"/>
@@ -194,6 +193,7 @@
         <ref bean="FixedFileInputStepAnalyzer"/>
         <ref bean="FilterRowsStepAnalyzer"/>
         <ref bean="RowsToResultStepAnalyzer"/>
+        <ref bean="MergeJoinStepAnalyzer"/>
      </list>
     </property>
 

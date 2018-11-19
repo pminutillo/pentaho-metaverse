@@ -265,7 +265,7 @@
            ref="TextFileOutputStepAnalyzer"/>
 
   <service id="mergeJoinStepAnalyzerService"
-           interface="org.pentaho.metaverse.api.analyzer.kettle.step.IStepAnalyzer"
+           interface="org.pentaho.metaverse.api.analyzer.kettle.step.IClonableStepAnalyzer"
            ref="MergeJoinStepAnalyzer"/>
 
   <service id="streamLookupStepAnalyzerService"
