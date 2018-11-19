@@ -166,19 +166,13 @@
         <ref bean="StreamLookupStepAnalyzer"/>
         <ref bean="MongoDbInputStepAnalyzer"/>
         <ref bean="ExcelInputStepAnalyzer"/>
-        <ref bean="GroupByStepAnalyzer"/>
         <ref bean="ExcelOutputStepAnalyzer"/>
         <ref bean="SplitFieldsStepAnalyzer"/>
         <ref bean="StringOperationsStepAnalyzer"/>
         <ref bean="StringsCutStepAnalyzer"/>
         <ref bean="StringsReplaceStepAnalyzer"/>
-        <ref bean="RowsToResultStepAnalyzer"/>
         <ref bean="RowsFromResultStepAnalyzer"/>
-        <ref bean="FixedFileInputStepAnalyzer"/>
-        <ref bean="FilterRowsStepAnalyzer"/>
-        <ref bean="HTTPClientStepAnalyzer"/>
         <ref bean="RestClientStepAnalyzer"/>
-        <ref bean="HTTPPostStepAnalyzer"/>
       </list>
     </property>
     <property name="clonableStepAnalyzers">
@@ -194,6 +188,12 @@
         <!-- TODO: uncomment once https://jira.pentaho.com/browse/ENGOPS-4612 is resolved -->
         <!--<ref bean="JMSConsumerStepAnalyzer"/>-->
         <ref bean="TextFileInputStepAnalyzer"/>
+        <ref bean="HTTPPostStepAnalyzer"/>
+        <ref bean="HTTPClientStepAnalyzer"/>
+        <ref bean="GroupByStepAnalyzer"/>
+        <ref bean="FixedFileInputStepAnalyzer"/>
+        <ref bean="FilterRowsStepAnalyzer"/>
+        <ref bean="RowsToResultStepAnalyzer"/>
      </list>
     </property>
 
