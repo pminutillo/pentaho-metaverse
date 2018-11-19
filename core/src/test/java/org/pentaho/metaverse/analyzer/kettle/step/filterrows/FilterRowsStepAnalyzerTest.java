@@ -108,4 +108,10 @@ public class FilterRowsStepAnalyzerTest {
     assertNotNull( supportedSteps );
     assertTrue( supportedSteps.contains( FilterRowsMeta.class ) );
   }
+
+  @Test
+  public void testNewInstance(){
+    FilterRowsStepAnalyzer analyzer = new FilterRowsStepAnalyzer();
+    assertTrue( analyzer.newInstance().getClass().equals(FilterRowsStepAnalyzer.class));
+  }
 }

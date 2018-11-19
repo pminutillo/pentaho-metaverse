@@ -333,7 +333,7 @@
   		   ref="FixedFileInputStepAnalyzer"/>
   		   
   <service id="filterRowsStepAnalyzerService"
-           interface="org.pentaho.metaverse.api.analyzer.kettle.step.IStepAnalyzer"
+           interface="org.pentaho.metaverse.api.analyzer.kettle.step.IClonableStepAnalyzer"
            ref="FilterRowsStepAnalyzer"/>
 
   <service id="httpClientStepAnalyzerService"
