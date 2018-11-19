@@ -146,4 +146,10 @@ public class FixedFileInputStepAnalyzerTest {
 
     assertEquals( FixedInputMeta.class, consumer.getMetaClass() );
   }
+
+  @Test
+  public void testNewInstance(){
+    FixedFileInputStepAnalyzer analyzer = new FixedFileInputStepAnalyzer();
+    assertTrue( analyzer.newInstance().getClass().equals(FixedFileInputStepAnalyzer.class));
+  }
 }

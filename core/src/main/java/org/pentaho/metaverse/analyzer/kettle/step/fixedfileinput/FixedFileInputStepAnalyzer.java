@@ -30,6 +30,7 @@ import org.pentaho.metaverse.api.IMetaverseObjectFactory;
 import org.pentaho.metaverse.api.MetaverseException;
 import org.pentaho.metaverse.api.StepField;
 import org.pentaho.metaverse.api.analyzer.kettle.step.ExternalResourceStepAnalyzer;
+import org.pentaho.metaverse.api.analyzer.kettle.step.IClonableStepAnalyzer;
 import org.pentaho.metaverse.api.model.IExternalResourceInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -79,5 +80,10 @@ public class FixedFileInputStepAnalyzer extends ExternalResourceStepAnalyzer<Fix
   // used for unit testing
   protected void setObjectFactory( IMetaverseObjectFactory factory ) {
     this.metaverseObjectFactory = factory;
+  }
+
+  @Override
+  public IClonableStepAnalyzer newInstance() {
+    return new FixedFileInputStepAnalyzer();
   }
 }
