@@ -2,7 +2,7 @@
  *
  * Pentaho Data Integration
  *
- * Copyright (C) 2002-2017 by Hitachi Vantara : http://www.pentaho.com
+ * Copyright (C) 2002-2018 by Hitachi Vantara : http://www.pentaho.com
  *
  *******************************************************************************
  *
@@ -110,5 +110,11 @@ public class GroupByStepAnalyzerTest {
   public void testCustomAnalyze() throws Exception {
     // only for code coverage
     analyzer.customAnalyze( meta, mock( IMetaverseNode.class ) );
+  }
+
+  @Test
+  public void testNewInstance(){
+    GroupByStepAnalyzer analyzer = new GroupByStepAnalyzer();
+    assertTrue( analyzer.newInstance().getClass().equals(GroupByStepAnalyzer.class));
   }
 }
