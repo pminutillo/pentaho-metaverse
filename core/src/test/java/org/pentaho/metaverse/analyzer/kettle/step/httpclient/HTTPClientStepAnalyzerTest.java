@@ -2,7 +2,7 @@
  *
  * Pentaho Data Integration
  *
- * Copyright (C) 2002-2017 by Hitachi Vantara : http://www.pentaho.com
+ * Copyright (C) 2002-2018 by Hitachi Vantara : http://www.pentaho.com
  *
  *******************************************************************************
  *
@@ -218,5 +218,11 @@ public class HTTPClientStepAnalyzerTest {
     assertTrue( resources.isEmpty() );
 
     assertEquals( HTTPMeta.class, consumer.getMetaClass() );
+  }
+
+  @Test
+  public void testNewInstance(){
+    HTTPClientStepAnalyzer analyzer = new HTTPClientStepAnalyzer();
+    assertTrue( analyzer.newInstance().getClass().equals(HTTPClientStepAnalyzer.class));
   }
 }
