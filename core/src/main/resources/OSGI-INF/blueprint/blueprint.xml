@@ -317,7 +317,7 @@
            ref="JobExecutorStepAnalyzer"/>
 
   <service id="rowsToResultStepAnalyzerService"
-           interface="org.pentaho.metaverse.api.analyzer.kettle.step.IStepAnalyzer"
+           interface="org.pentaho.metaverse.api.analyzer.kettle.step.IClonableStepAnalyzer"
            ref="RowsToResultStepAnalyzer"/>
 
   <service id="rowsFromResultStepAnalyzerService"

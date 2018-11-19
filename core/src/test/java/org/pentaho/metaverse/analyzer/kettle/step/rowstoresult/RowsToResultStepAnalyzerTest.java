@@ -30,6 +30,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.steps.rowstoresult.RowsToResultMeta;
 import org.pentaho.metaverse.api.IMetaverseNode;
+import org.pentaho.metaverse.api.analyzer.kettle.step.IClonableStepAnalyzer;
 
 import java.util.Set;
 
@@ -69,5 +70,11 @@ public class RowsToResultStepAnalyzerTest {
     assertNotNull( types );
     assertEquals( types.size(), 1 );
     assertTrue( types.contains( RowsToResultMeta.class ) );
+  }
+
+  @Test
+  public void testNewInstance(){
+    RowsToResultStepAnalyzer analyzer = new RowsToResultStepAnalyzer();
+    assertTrue( analyzer.newInstance().getClass().equals(RowsToResultStepAnalyzer.class));
   }
 }
