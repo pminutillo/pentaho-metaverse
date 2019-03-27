@@ -62,6 +62,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -178,11 +179,21 @@ public class JobRuntimeExtensionPoint extends BaseRuntimeExtensionPoint implemen
       runAnalyzers( job );
     }
 
-    if ( allowedAsync() ) {
-      createLineGraphAsync( job );
-    } else {
-      createLineGraph( job );
+//    if ( allowedAsync() ) {
+//      createLineGraphAsync( job );
+//    } else {
+//      createLineGraph( job );
+//    }
+
+
+    if( job.getSignalComplete() != null ){
+      log.info("trans.getSignalComplete is not null!");
     }
+    else {
+      job.setSignalComplete( new CountDownLatch(1) );
+    }
+
+    createLineGraphAsync( job );
   }
 
   protected void createLineGraphAsync( final Job job ) {
@@ -268,6 +279,10 @@ public class JobRuntimeExtensionPoint extends BaseRuntimeExtensionPoint implemen
     // cleanup to prevent unnecessary memory usage - we no longer need this Job in the JobLineageHolderMap
     JobLineageHolderMap.getInstance().removeLineageHolder( job );
 
+    if( job.getSignalComplete() != null ){
+      log.info("Lineage complete! Sending countDown ...");
+      job.getSignalComplete().countDown();
+    }
   }
 
   protected void populateExecutionProfile( IExecutionProfile executionProfile, Job job ) {

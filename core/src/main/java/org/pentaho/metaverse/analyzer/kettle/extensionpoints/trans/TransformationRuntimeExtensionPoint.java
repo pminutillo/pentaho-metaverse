@@ -61,6 +61,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -263,15 +264,24 @@ public class TransformationRuntimeExtensionPoint extends BaseRuntimeExtensionPoi
     }
 
     log.info( Messages.getString( "INFO.TransformationFinished", trans.getName() ) );
-    if ( shouldCreateGraph( trans ) ) {
-      runAnalyzers( trans );
-    }
+      if ( shouldCreateGraph( trans ) ) {
+        runAnalyzers( trans );
+      }
+//
+//    if ( allowedAsync() ) {
+//      createLineGraphAsync( trans );
+//    } else {
+//      createLineGraph( trans );
+//    }
 
-    if ( allowedAsync() ) {
-      createLineGraphAsync( trans );
-    } else {
-      createLineGraph( trans );
-    }
+      if( trans.getSignalComplete() != null ){
+        log.info("trans.getSignalComplete is not null!");
+      }
+      else {
+        trans.setSignalComplete( new CountDownLatch(1) );
+      }
+
+      createLineGraphAsync(trans);
   }
 
   protected void createLineGraphAsync( Trans trans ) {
@@ -357,5 +367,10 @@ public class TransformationRuntimeExtensionPoint extends BaseRuntimeExtensionPoi
 
     // cleanup to prevent unnecessary memory usage - we no longer need this Trans in the TransLineageHolderMap
     TransLineageHolderMap.getInstance().removeLineageHolder( trans );
+
+    if( trans.getSignalComplete() != null ){
+      log.info("Lineage complete! Sending countDown ...");
+      trans.getSignalComplete().countDown();
+    }
   }
 }
