@@ -20,6 +20,8 @@
  *
  ******************************************************************************/
 
+/* This is a test */
+
 package org.pentaho.dictionary;
 
 import org.pentaho.metaverse.api.ILogicalIdGenerator;
